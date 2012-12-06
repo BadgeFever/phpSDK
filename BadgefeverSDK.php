@@ -31,7 +31,7 @@ class BadgefeverSDK {
 	}
 
 	public function getBadges($email=null, $format='json', $params = array()){
-		// @todo: if (is_array($email))
+		// @todo: if (is_array($email)) for bundled requests
 		$query = self::createHash($email).'.'.$format;
 
 		if (!empty($params)){
