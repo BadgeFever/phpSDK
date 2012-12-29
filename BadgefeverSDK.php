@@ -6,12 +6,7 @@ class BadgefeverSDK {
 	protected $_curlOptions = array();
 	protected $_requestParams = null;
 
-	protected $_bfCalls = array(
-		'display_basic' => array(
-			'method' => 'GET',
-			'url' => 'http://badgefever.tomas/api/display/',
-		),
-	);
+	protected $_endPoint = 'http://badgefever.tomas/api/';
 
 	function __construct($apiKey=null, $apiSecret=null){
 		if ($apiKey)
@@ -31,7 +26,6 @@ class BadgefeverSDK {
 	}
 
 	public function getBadges($email=null, $format='json', $params = array()){
-		// @todo: if (is_array($email)) for bundled requests
 		$query = self::createHash($email).'.'.$format;
 
 		if (!empty($params)){
