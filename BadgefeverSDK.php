@@ -6,9 +6,13 @@ class BadgefeverSDK {
 	protected $_curlOptions = array();
 	protected $_requestParams = null;
 
-	protected $_endPoint = 'http://badgefever.tomas/api/';
+	protected $_endPoint = 'http://api.badgefever.com/v1/';
 
-	function __construct($apiKey=null, $apiSecret=null){
+	protected $_badgeMap;
+
+	function __construct($badges = null, $apiKey=null, $apiSecret=null){
+		$this->_badgeMap = $badges;
+
 		if ($apiKey)
 			$this->_apiKey = $apiKey;
 
@@ -50,9 +54,11 @@ class BadgefeverSDK {
 	}
 
 	public function hasBadge($email=null, $badge=null, $params=array()){
+		$badgeId = ($this->_badgeMap[$badge]) ? $this->_badgeMap[$badge] : $badge;
+
 		$query = array(
 			'email='.$this->createHash($email),
-			'badge='.$badge,
+			'badge='.$badgeId,
 		);
 
 		$query = array_merge($query,$this->parseParams($params));
@@ -66,8 +72,10 @@ class BadgefeverSDK {
 	}
 
 	public function getAssignCount($badge=null, $params=array()){
+		$badgeId = ($this->_badgeMap[$badge]) ? $this->_badgeMap[$badge] : $badge;
+
 		$query = array(
-			'badge='.$badge,
+			'badge='.$badgeId,
 		);
 
 		$query = array_merge($query,$this->parseParams($params));
@@ -81,8 +89,10 @@ class BadgefeverSDK {
 	}
 
 	public function assignBadge($badge=null, $email=null, $params=array()){
+		$badgeId = ($this->_badgeMap[$badge]) ? $this->_badgeMap[$badge] : $badge;
+
 		$query = array(
-			'badge='.$badge,
+			'badge='.$badgeId,
 			'email='.$this->createHash($email),
 		);
 
