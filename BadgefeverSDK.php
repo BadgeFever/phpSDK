@@ -54,7 +54,7 @@ class BadgefeverSDK {
 	}
 
 	public function hasBadge($email=null, $badge=null, $params=array()){
-		$badgeId = ($this->_badgeMap[$badge]) ? $this->_badgeMap[$badge] : $badge;
+		$badgeId = $this->getBadgeId($badge);
 
 		$query = array(
 			'email='.$this->createHash($email),
@@ -63,7 +63,7 @@ class BadgefeverSDK {
 
 		$query = array_merge($query,$this->parseParams($params));
 
-		$query = join('&',$query);
+		$query = join('&',$query);echo $query;
 		$this->_curlOptions[CURLOPT_URL] = $this->_endPoint.'assign/?'.$query;
 
 		$response = $this->request();
@@ -72,7 +72,7 @@ class BadgefeverSDK {
 	}
 
 	public function getAssignCount($badge=null, $params=array()){
-		$badgeId = ($this->_badgeMap[$badge]) ? $this->_badgeMap[$badge] : $badge;
+		$badgeId = $this->getBadgeId($badge);
 
 		$query = array(
 			'badge='.$badgeId,
@@ -89,7 +89,7 @@ class BadgefeverSDK {
 	}
 
 	public function assignBadge($badge=null, $email=null, $params=array()){
-		$badgeId = ($this->_badgeMap[$badge]) ? $this->_badgeMap[$badge] : $badge;
+		$badgeId = $this->getBadgeId($badge);
 
 		$query = array(
 			'badge='.$badgeId,
@@ -120,5 +120,13 @@ class BadgefeverSDK {
 		$output[] = 'apiSecret='.urlencode($this->_apiSecret);
 
 		return $output;
+	}
+
+	protected function getBadgeId($alias){
+		if (isset($this->_badgeMap[$alias])){
+			return $this->_badgeMap[$alias];
+		} else {
+			return $alias;
+		}
 	}
 }
