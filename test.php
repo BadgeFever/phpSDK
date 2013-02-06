@@ -1,6 +1,10 @@
 <?php
 require_once 'BadgefeverSDK.php';
+<<<<<<< HEAD
 $bf = new BadgefeverSDK('qwepoi61','4cebfd365a9dc61bb64339ff8085de3e');
+=======
+$bf = new BadgefeverSDK(array('badge-collector'=>1),'qwepoi6','c1435b89b4110a514d4412809ffb372d');
+>>>>>>> development
 
 ?>
 <section>
@@ -13,7 +17,7 @@ $bf = new BadgefeverSDK('qwepoi61','4cebfd365a9dc61bb64339ff8085de3e');
 <section>
 	<h1>Did email test@badgefever.com achieved badge 1? (GET)</h1>
 	<?php
-		echo $bf->hasBadge('test6@badgefever.com',2);
+		echo $bf->hasBadge('test@badgefever.com',1);
 	?>
 </section>
 
@@ -27,6 +31,6 @@ $bf = new BadgefeverSDK('qwepoi61','4cebfd365a9dc61bb64339ff8085de3e');
 <section>
     <h1>Assign Badge 1 to test@badgefever.com (POST)</h1>
 	<?php
-		echo $bf->assignBadge(1,'test@badgefever.com',array('level'=>1));
+		echo $bf->assignBadge(6,'test@badgefever.com');
 	?>
 </section>
