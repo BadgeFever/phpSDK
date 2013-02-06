@@ -1,10 +1,6 @@
 <?php
 require_once 'BadgefeverSDK.php';
-<<<<<<< HEAD
-$bf = new BadgefeverSDK('qwepoi61','4cebfd365a9dc61bb64339ff8085de3e');
-=======
 $bf = new BadgefeverSDK(array('badge-collector'=>1),'qwepoi6','c1435b89b4110a514d4412809ffb372d');
->>>>>>> development
 
 ?>
 <section>

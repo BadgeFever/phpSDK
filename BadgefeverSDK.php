@@ -6,16 +6,12 @@ class BadgefeverSDK {
 	protected $_curlOptions = array();
 	protected $_requestParams = null;
 
-<<<<<<< HEAD
-	protected $_endPoint = 'http://bf.tomasdostal.com/api/';
-=======
 	protected $_endPoint = 'http://api.badgefever.com/v1/';
 
 	protected $_badgeMap;
 
 	function __construct($badges = null, $apiKey=null, $apiSecret=null){
 		$this->_badgeMap = $badges;
->>>>>>> development
 
 		if ($apiKey)
 			$this->_apiKey = $apiKey;
