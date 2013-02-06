@@ -13,7 +13,7 @@ $bf = new BadgefeverSDK(array('badge-collector'=>1),'qwepoi6','c1435b89b4110a514
 <section>
 	<h1>Did email test@badgefever.com achieved badge 1? (GET)</h1>
 	<?php
-		echo $bf->hasBadge('test6@badgefever.com',2);
+		echo $bf->hasBadge('test@badgefever.com',1);
 	?>
 </section>
 
@@ -27,6 +27,6 @@ $bf = new BadgefeverSDK(array('badge-collector'=>1),'qwepoi6','c1435b89b4110a514
 <section>
     <h1>Assign Badge 1 to test@badgefever.com (POST)</h1>
 	<?php
-		echo $bf->assignBadge(6,'dostal.it@gmail.com');
+		echo $bf->assignBadge(6,'test@badgefever.com');
 	?>
 </section>
